@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
 *{
   margin: 0px;
 }
@@ -10,15 +10,32 @@ body{
   justify-content: center;
   background-color: rgb(46, 46, 46);
   height: 100vh;
+  flex-direction: column;
+}
+
+#versionButton{
+  background-color: rgb(142, 216, 23);
+  width: 100px;
+  padding:10px;
+  margin: 5px;
+  border-radius: 7px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: open sans;
+  box-shadow: inset -2px -2px 5px rgb(38, 100, 19);
+
 }
 
 #box{
   background-color: white;
   width: 700px;
-  height:500px;
+  height:475px;
   border: black solid 2px;
   display: flex;
-  padding: 15px;
+  padding: 10px;
 }
 
 .section{
@@ -28,17 +45,18 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: large;
   text-transform: uppercase;
   font-weight: 800;
   font-family: oswald;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 /*section 1*/
 #box .section:first-child{
   background-color: rgb(255, 217, 0);
-  animation: bgColorOne 1s infinite ease-in-out alternate;
+  -webkit-animation: bgColorOne 1s infinite ease-in-out alternate;
+     -moz-animation: bgColorOne 1s infinite ease-in-out alternate;
+          animation: bgColorOne 1s infinite ease-in-out alternate;
 }
 
 /*section 2*/
@@ -48,19 +66,91 @@ body{
 
 #box .section:nth-child(2) p{
   background-color: white;
-  animation: rotateTwo 3s infinite ; 
+  -webkit-animation: rotateTwo 3s infinite;
+     -moz-animation: rotateTwo 3s infinite;
+          animation: rotateTwo 3s infinite ; 
 }
 
 /*section 3*/
 #box .section:nth-child(3){
   background-color: blue;
 }
-
 #box .section:nth-child(3) p{
-  animation: jumpThree 2s infinite alternate;
+-webkit-animation: jumpThree 2s infinite;
+   -moz-animation: jumpThree 2s infinite;
+        animation: jumpThree 2s infinite;
 }
 
-/*keyframe animations*/
+
+
+
+/*GRID LAYOUT*/
+.container{
+  background-color: white;
+  width: 700px;
+  height:475px;
+  border: black solid 1.5px;
+  display: flex;
+  padding: 10px;
+}
+
+#square{
+  display: grid;
+  width:100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr ;
+  grid-template-areas: "squareOne squareTwo squareThree";
+  grid-gap: 1.5px;
+  background-color: black;
+  padding:2px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-family: oswald;
+  font-size: 35px;
+}
+
+.squareOne{
+  grid-area: squareOne;
+  background-color: rgb(255, 217, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  -webkit-animation: bgColorOne 1s infinite ease-in-out alternate;
+     -moz-animation: bgColorOne 1s infinite ease-in-out alternate;
+          animation: bgColorOne 1s infinite ease-in-out alternate;
+}
+
+.squareTwo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: squareTwo;
+  background-color: white;
+}
+.squareTwo p{
+  -webkit-animation: rotateTwo 3s infinite;
+     -moz-animation: rotateTwo 3s infinite;
+          animation: rotateTwo 3s infinite ; 
+}
+
+.squareThree{
+  grid-area: squareThree;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+}
+.squareThree p{
+  -webkit-animation: jumpThree 2s infinite;
+     -moz-animation: jumpThree 2s infinite;
+          animation: jumpThree 2s infinite;
+}
+
+
+
+/*KEY FRAMES*/
 
 /*changes background color and number in section 1*/
 @-webkit-keyframes bgColorOne{
@@ -95,7 +185,7 @@ body{
 
 /*moves number up and down in section 3*/
 @-webkit-keyframes jumpThree{
-  100%{
+  0%{
     transform: translateY(-300%);
         color: white;
   }
@@ -103,14 +193,19 @@ body{
     transform: translateY(0%);
         color: black;
   }
-    0%{
+    75%{
     transform: translateY(300%);
+        color: white;
+  }
+
+  100%{
+    transform: translateY(-300%);
         color: white;
   }
 }
 
 @-moz-keyframes jumpThree{
-  100%{
+  0%{
     transform: translateY(-300%);
         color: white;
   }
@@ -118,14 +213,19 @@ body{
     transform: translateY(0%);
         color: black;
   }
-    0%{
+    75%{
     transform: translateY(300%);
+        color: white;
+  }
+
+  100%{
+    transform: translateY(-300%);
         color: white;
   }
 }
 
 @keyframes jumpThree{
-  100%{
+  0%{
     transform: translateY(-300%);
         color: white;
   }
@@ -133,8 +233,26 @@ body{
     transform: translateY(0%);
         color: black;
   }
-    0%{
+    75%{
     transform: translateY(300%);
         color: white;
   }
+
+  100%{
+    transform: translateY(-300%);
+        color: white;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container{
+    width: 90%;
+    height:70%;
+  }
+
+  #box{
+      width: 90%;
+      height:70%;
+  }
+  
 }
